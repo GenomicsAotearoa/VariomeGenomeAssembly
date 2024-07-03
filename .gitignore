@@ -1,9 +1,6 @@
 containers
 modulefiles
-apps/*.sif
-bin/.ipynb_checkpoints/
 dna-nn-0.1/
-parameters.config
 test/Resources/
 test/testdata/Assemblies/
 test/testdata/Meryl/
