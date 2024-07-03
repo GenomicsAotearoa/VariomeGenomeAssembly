@@ -1,0 +1,2 @@
+version=3
+  https://github.com/marbl/merqury/tags .*/v(.+)\.tar\.gz

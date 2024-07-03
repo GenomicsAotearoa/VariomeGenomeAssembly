@@ -1,0 +1,2 @@
+version=3
+  https://github.com/lh3/yak/tags .*/v(.+)\.tar\.gz

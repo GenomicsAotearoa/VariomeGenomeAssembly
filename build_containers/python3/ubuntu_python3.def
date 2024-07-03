@@ -1,0 +1,29 @@
+BootStrap: docker
+From: ubuntu:22.04
+
+%help
+    Container with python3.10 and additional libs
+
+%setup
+
+%post
+    apt-get update -y
+    apt-get install wget -y
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
+    libxft-dev libxext-dev python3.10 libssl-dev libgsl0-dev libtiff-dev \
+    python3-pip -y
+    pip3 install argparse==1.4.0
+    pip3 install numpy==1.26.4
+    pip3 install matplotlib==3.9.0
+    pip3 install pandas==2.2.2
+
+%environment
+    export LC_ALL=C
+
+%runscript
+    exec /usr/bin/python3.10 "$@"
+
+%labels
+    Author Shane Sturrock
+    Version v1.0

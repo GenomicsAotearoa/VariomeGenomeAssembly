@@ -1,0 +1,32 @@
+BootStrap: docker
+From: ubuntu:22.04
+
+%help
+    Container with gfacpp tools
+
+%setup
+
+%post
+    apt-get update -y
+    apt-get install wget -y
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
+    libxft-dev libxext-dev git libssl-dev libgsl0-dev libtiff-dev -y
+    git clone https://github.com/snurk/gfacpp.git
+    git clone https://github.com/lh3/gfatools.git
+    rm -rf gfacpp/gfatools
+    mv gfatools gfacpp
+    cd gfacpp ; make
+    cd build ; rm *.o *.a ; mv * /usr/bin
+    cd ../.. ; rm -rf gfacpp
+    apt-get remove --purge dpkg-dev cmake g++ gcc git wget -y
+
+%environment
+    export LC_ALL=C
+
+%runscript
+    exec /usr/bin/neighborhood "$@"
+
+%labels
+    Author Shane Sturrock
+    Version v1.0

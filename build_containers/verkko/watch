@@ -1,0 +1,2 @@
+version=3
+  https://github.com/marbl/verkko/tags .*/v(.+)\.tar\.gz

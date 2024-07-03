@@ -1,0 +1,22 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%help
+    Container with pigz installed.
+
+%setup
+
+%post
+    apt-get -y update
+    apt-get -y upgrade
+    apt-get -y install pigz locales
+
+%environment
+    export LC_ALL=C
+
+%runscript
+    exec /usr/bin/pigz "$@"
+
+%labels
+    Author Shane Sturrock
+    Version v1.0
